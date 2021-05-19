@@ -1,0 +1,26 @@
+-- TO DO LIST --
+
+
+-- Less Important --
+
+This is just more for developer convinience I am going to add a small property in Command interface permissions the property is working for
+now but it's done in a really god damn stupid way I spent like 30 minutes tinkering around with it and no luck. Going to make it so we have 
+the options of which permissions there are rather than there only being for us to guess it. This doesn't fall in important because the handler
+works fine but this will be more convenient
+
+I don't think Sharding and clustering is necessary at the moment because the bot isn't even public yet lmao but as soon as the bot
+is released I want to just get the Sharding done with so we can just copy paste the code if needed to (I doubt)
+
+When we are making our repository public for other people to view we are gonna need a markdown file explaining everything so 
+draft something and convert it into a markdown package
+
+Use this for reference: https://www.markdownguide.org/basic-syntax
+
+-- Plans -- 
+
+For hosting of Birb we are going to be using Oracle the specs of the VM is 1 core 1 gig of ram and more than enough storage
+I don't think it's necessary to upgrade yet but if we need to I will start paying for hosting at digital ocean probably 
+
+Database Plan - We don't need one at the moment again the free tier from Mongo DB aka the 512 MB will last us a while
+I would consider upgrading this when it comes to the point where it's unusable because of the speeds or when we have more people 
+using the bot

@@ -1,0 +1,31 @@
+-- Command List --
+
+-- Moderation -- 
+Ban (Using Database)
+Kick (Using Database)
+Mute (Using Database this command will be an extension to the Database Involved Mute Role assignment)
+Unmute (Using Database)
+Jail (Using Database this command will be an extension to the Database Involved Jail Role and Channel assignment)
+Unjail (Using Database this command will be an extension to the Database Involved Jail Role and Channel assignment)
+Warn (Using Database)
+Unwarn / Removewarn (Using Database)
+
+-- Database Involved --
+Setting Mute Role ()
+
+-- Fun --
+
+truth or dare command (make a NPM package for this)
+NHIE (make a NPM package for this)
+
+-- Dev --
+Uptime (Calculates the time bot has been up for)
+
+-- Utility --
+Help command (Will grab command names from the command map)
+Avatar Command 
+Userinfo Command
+Serverinfo Command
+ID Command (grabs the mentioned person's ID)
+
+-- Server --

@@ -1,0 +1,23 @@
+This file is basically some typescript shit we can look back at if we need a refresher and some new concepts
+
+-- What does the typing "void" mean? --
+
+Most of the typings in typescript are self explanatory for example string is a string number is a number but void is a little different
+
+Void is most generally used in functions it is used when functions don't return any value in specific then you can define the function's 
+return typing as void. To sum it up if a function doesn't return any value then you have an option to specify the return value as void
+
+-- files ending with .d.ts --
+
+The whole purpose of this file is to define typings of something 
+
+for example: 
+
+export function Multiply(x: number, y: number): number
+
+we can tell that x and y will be numbers and the returning will also be a number but as soon as we try to open the function and start 
+writing code in the function it will throw us an error because .d.ts files are meant to just define typings of functions
+and nothing else
+
+-- Making your own typings --
+
