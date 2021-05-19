@@ -41,7 +41,6 @@ export interface Command {
   usage?: string
   description?: string
   aliases?: string[]
-  // permissions?: any
   permissions?: [
     "createInstantInvite" |
     "kickMembers" |
