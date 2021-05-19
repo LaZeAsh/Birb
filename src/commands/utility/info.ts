@@ -26,7 +26,7 @@ Devs: "Ashh#8675" ".nero#3887" "JackOutTheBox#6869"
 
 Library: Eris
 
-Ram Usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB used out of ${(process.memoryUsage().heapTotal / 1000 / 1000) .toFixed(2)} MB
+Ram Usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB used
 
 Guilds: ${client.guilds.size}
 

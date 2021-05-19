@@ -65,7 +65,7 @@ export = {
             name: `⏲️ Joined At`,
             value: `${moment(new Date(r_member.joinedAt).toISOString()).format("dddd, MMMM Do YYYY, [at] h:mm a")}`,
             inline: true
-          }
+          },
         ],
         thumbnail: {
           url: member.avatarURL
@@ -83,6 +83,6 @@ function draw_roles(roles_ids: string[], guild: any){
     if(!role)return;
     roles_text.push(`${role.mention}`);
   }
-  if(roles_text.length > 500) roles_text = `🐦 too many roles for birb to count!`
+  if(roles_text.length > 500) roles_text = `🐦 Too many roles for Birb to count!`
   return roles_text;
 }

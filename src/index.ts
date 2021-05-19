@@ -48,10 +48,11 @@ client.on('ready', ready)
 client.on('messageCreate', message)
 client.on('error', async(error) => {
   log.info(`Error event working`)
-  client.createMessage(`820734674460213299`, {
+  client.createMessage(process.env.errorChannel as string, {
     embed: {
       title: "Error",
-      description: `\`${error}\``
+      description: `\`${error}\``,
+      color: colors.theme
     }
   })
 })
@@ -59,7 +60,7 @@ client.connect()
 
 //Global Functions
 
-function deleteMsg(message: Message, mili_seconds: number, reason?: string){
+function deleteMsg(message: Message, mili_seconds: number, reason?: string): any{
   if(!message || !mili_seconds)return console.log('Missing parameters');
   if(!reason)reason = 'No reason provided';
   setTimeout(() => message.delete(reason), mili_seconds);

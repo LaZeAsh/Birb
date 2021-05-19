@@ -12,7 +12,7 @@ export = {
     e.client.createMessage(e.message.channel.id, {
       embed: {
         title: "Invite Link",
-        description: "[birbcool/invite](https://discord.com/oauth2/authorize?client_id=824130482101944372&scope=bot&permissions=2013588598) \n [birbcool/support](https://discord.com/invite/vp4S5VRz8h) \n I am a cool Birb",
+        description: "[birbcool/invite](https://discord.com/oauth2/authorize?client_id=824130482101944372&scope=bot&permissions=2013588598) \n[birbcool/support](https://discord.com/invite/vp4S5VRz8h) \n I am a cool Birb",
         color: colors.theme
       }
     })
