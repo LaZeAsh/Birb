@@ -41,48 +41,48 @@ export interface Command {
   usage?: string
   description?: string
   aliases?: string[]
-  permissions?: any
-  // permissions?: eris.Constants.permissions[
-  //   "createInstantInvite" |
-  //   "kickMembers" |
-  //   "banMembers" |
-  //   "administrator" |
-  //   "manageChannels" |
-  //   "manageGuild" |
-  //   "addReactions" |
-  //   "viewAuditLog" |
-  //   "viewAuditLogs" |
-  //   "voicePrioritySpeaker" |
-  //   "voiceStream" |
-  //   "stream" |
-  //   "viewChannel" |
-  //   "readMessages" |
-  //   "sendMessages" |
-  //   "sendTTSMessages" |
-  //   "manageMessages" |
-  //   "embedLinks" |
-  //   "attachFiles" |
-  //   "readMessageHistory" |
-  //   "mentionEveryone" |
-  //   "useExternalEmojis" |
-  //   "externalEmojis" |
-  //   "voiceConnect" |
-  //   "voiceSpeak" |
-  //   "voiceMuteMembers" |
-  //   "voiceDeafenMembers" |
-  //   "voiceMoveMembers" |
-  //   "voiceUseVAD" |
-  //   "changeNickname" |
-  //   "manageNicknames" |
-  //   "manageRoles" |
-  //   "manageWebhooks" |
-  //   "manageEmojis" |
-  //   "useSlashCommands" |
-  //   "voiceRequestToSpeak" |
-  //   "allGuild" |
-  //   "allText" |
-  //   "allVoice" |
-  //   "all"
-  // ]
+  // permissions?: any
+  permissions?: [
+    "createInstantInvite" |
+    "kickMembers" |
+    "banMembers" |
+    "administrator" |
+    "manageChannels" |
+    "manageGuild" |
+    "addReactions" |
+    "viewAuditLog" |
+    "viewAuditLogs" |
+    "voicePrioritySpeaker" |
+    "voiceStream" |
+    "stream" |
+    "viewChannel" |
+    "readMessages" |
+    "sendMessages" |
+    "sendTTSMessages" |
+    "manageMessages" |
+    "embedLinks" |
+    "attachFiles" |
+    "readMessageHistory" |
+    "mentionEveryone" |
+    "useExternalEmojis" |
+    "externalEmojis" |
+    "voiceConnect" |
+    "voiceSpeak" |
+    "voiceMuteMembers" |
+    "voiceDeafenMembers" |
+    "voiceMoveMembers" |
+    "voiceUseVAD" |
+    "changeNickname" |
+    "manageNicknames" |
+    "manageRoles" |
+    "manageWebhooks" |
+    "manageEmojis" |
+    "useSlashCommands" |
+    "voiceRequestToSpeak" |
+    "allGuild" |
+    "allText" |
+    "allVoice" |
+    "all"
+  ]
   run: Function
 }
