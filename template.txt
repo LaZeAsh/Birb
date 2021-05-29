@@ -1,6 +1,5 @@
-Command Tempelate
-
 import { CommandProps, Command } from "../../@types";
+import { colors, deleteMsg } from '../../index'
 
 export = {
   name: "",

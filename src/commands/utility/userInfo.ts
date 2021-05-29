@@ -1,12 +1,11 @@
 import { CommandProps, Command } from "../../@types";
 import { colors } from '../../index'
-import moment from 'moment'
 
 export = {
   name: "userinfo",
   category: "util",
   aliases: ["whois", "user"],
-  description: "Find information about a user!",
+  description: "Find the UserInfo of a User",
   usage: "b!userinfo <mention/tag>",
   run: function(e: CommandProps) { 
     const {
@@ -22,10 +21,12 @@ export = {
     if(message?.mentions[0] === undefined) member = message.author
     let r_member = guild?.members.get(member.id), roles = r_member?.roles;
     if(!r_member || !roles)return;
+    let ro = get_roles(guild, roles);
+    if(!ro)return;
     message.channel.createMessage({
       embed: {
         title: `${member.username}#${member.discriminator}`,
-        description: `🐦 A Small Birbscription of ${member.username}`,
+        description: `🐦 a small birbscription of ${member.username}`,
         fields: [
           {
             name: "📝 Display Name",
@@ -44,28 +45,27 @@ export = {
           },
           {
             name: `🤖 Bot`,
-            value: `${member.bot === true ? 'Yes' : 'No'}`,
-            inline: true
+            value: `${member.bot === true ? 'Yes' : 'No'}`
           },
           {
             name: `⏫ Highest Role`,
-            value: `${guild.roles?.get(roles[0])?.mention}`,
+            value: `${ro[0].role.mention}`,
             inline: true
           },
           {
             name: `📰 Roles`,
-            value: `${draw_roles(roles, guild)}`,
+            value: `${ro.map((a) => a.role.mention).join(', ')}`,
             inline: true
           },
           {
             name: `⏲️ Account Creation`,
-            value: `${moment(new Date(member.createdAt).toISOString()).format("dddd, MMMM Do YYYY, [at] h:mm a")}`,
+            value: `${new Date(member.createdAt).toLocaleString("en-US", {month: "long", weekday: "long", day: "numeric", year: "numeric", hour: "numeric", minute: "numeric", second: "numeric", timeZoneName: "short", })}`,
           },
           {
             name: `⏲️ Joined At`,
-            value: `${moment(new Date(r_member.joinedAt).toISOString()).format("dddd, MMMM Do YYYY, [at] h:mm a")}`,
+            value: `${new Date(r_member.joinedAt).toLocaleString("en-US", {month: "long", weekday: "long", day: "numeric", year: "numeric", hour: "numeric", minute: "numeric", second: "numeric", timeZoneName: "short", })}`,
             inline: true
-          },
+          }
         ],
         thumbnail: {
           url: member.avatarURL
@@ -73,16 +73,16 @@ export = {
         color: colors.theme
       }
     })
+    return
   } 
 } as Command
-
-function draw_roles(roles_ids: string[], guild: any){
-  let roles_text: string[] | string = [];
+function get_roles(guild: any, roles_ids: string[]){
+  let roles_text = [];
   for(const role_id of roles_ids){
     let role = guild.roles?.get(role_id);
     if(!role)return;
-    roles_text.push(`${role.mention}`);
+    roles_text.push({ position: role.position, role: role });
   }
-  if(roles_text.length > 500) roles_text = `🐦 Too many roles for Birb to count!`
+  roles_text.sort((a, b) => b.position - a.position);
   return roles_text;
 }

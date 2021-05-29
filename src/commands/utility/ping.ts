@@ -32,7 +32,7 @@ export = {
     }).then((msg) => msg.edit({
       embed: {
         title: 'Birb\'s Ping',
-        description: `**Ping**\n${msg.createdAt - message.createdAt}ms\n\n**Database**\n${pong}ms`,
+        description: `**Ping**\n${Date.now() - msg.createdAt}ms\n\n**Database**\n${pong}ms`,
         color: colors.theme
       }
     }))

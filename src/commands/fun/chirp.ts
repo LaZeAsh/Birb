@@ -3,7 +3,7 @@ import { colors } from '../../index'
 export = {
   name: "chirp",
   category: "fun",
-  aliases: ["sing"],
+  aliases: ["sing", "singing"],
   description: "Get a chirp from birb!",
   usage: "b!chirp",
   run: function (e: CommandProps){

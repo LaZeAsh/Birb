@@ -48,11 +48,11 @@ client.on('ready', ready)
 client.on('messageCreate', message)
 client.on('error', async(error) => {
   log.info(`Error event working`)
-  client.createMessage(process.env.errorChannel as string, {
+  client.createMessage(`820734674460213299`, {
     embed: {
       title: "Error",
       description: `\`${error}\``,
-      color: colors.theme
+      color: colors.error
     }
   })
 })
@@ -63,7 +63,15 @@ client.connect()
 function deleteMsg(message: Message, mili_seconds: number, reason?: string): any{
   if(!message || !mili_seconds)return console.log('Missing parameters');
   if(!reason)reason = 'No reason provided';
-  setTimeout(() => message.delete(reason), mili_seconds);
+  setTimeout(() => message.delete(reason).catch((error: any) => {
+    client.createMessage(process.env.errrorChannel as string, {
+      embed: {
+        title: `Error`,
+        description: `Failed deleting a message`,
+        color: colors.error
+      }
+    })
+  }), mili_seconds)
 }
 
 function secondsToTimeV2(secs: number) {

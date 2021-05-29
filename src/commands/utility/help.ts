@@ -16,7 +16,7 @@ export = {
       message.channel.createMessage({
         embed: {
           title: `🐦 Birbby Help Commands! | Prefix: ${prefix}`,
-          description: `*Psst~* if you want to support us please go here! [birb/patreon](https://www.patreon.com/birbby)`,
+          description: `*Psst~* if you want to support us please go here! [birb/patreon](https://www.patreon.com/birbby) \n `,
           fields: [
             {
               name: `ℹ️ Utility`,

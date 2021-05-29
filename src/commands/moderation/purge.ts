@@ -15,7 +15,10 @@ export = {
       args,
       client
     } = e
-    if(!message.member?.permissions.has(this.permissions)) return message.channel.createMessage(`🐦 is sad! You do not have **${this.permissions}** permissions to execute **${this.name}** command!`)
+    if(!message.member?.permissions.has("manageMessages")) return message.channel.createMessage(`🐦 is sad! You do not have **Manage Messages** permissions to execute **${this.name}** command!`).then((msg) => {
+      deleteMsg(msg, 5000)
+      deleteMsg(message, 5000)
+    })
     let amountToBePurged = parseInt(args[0])
     if(!amountToBePurged) return message.channel.createMessage(`🐦 is angy! Please enter an amount to purge \`\`\`b!purge <amount>\`\`\``)
     let reason: string = args.slice(1).join(" ")
@@ -33,7 +36,8 @@ export = {
       message.channel.createMessage({
         embed: {
           title: `Error`,
-          description: `🐦 is sad! Make sure the messages you are trying to purge aren't older than 14 days!`
+          description: `🐦 is sad! Make sure the messages you are trying to purge aren't older than 14 days!`,
+          color: colors.error
         }
       }).then((msg) => {
         deleteMsg(msg, 5000)

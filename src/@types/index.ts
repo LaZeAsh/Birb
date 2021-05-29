@@ -35,6 +35,7 @@ export interface Log {
   debug(...content: Array<string>): void
 }
 
+export let modIDs: string[]
 export interface Command {
   name: string
   category: string

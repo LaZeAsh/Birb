@@ -2,8 +2,8 @@ import { CommandProps, Command } from "../../@types";
 import { colors, deleteMsg } from '../../index'
 
 export = {
-  name: "",
-  category: "",
+  name: "ban",
+  category: "mod",
   aliases: [],
   description: "",
   usage: "",
@@ -13,5 +13,7 @@ export = {
       args,
       client
     } = e
+    
+    message.channel.createMessage(``)
   } 
 } as Command

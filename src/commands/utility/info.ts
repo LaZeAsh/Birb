@@ -26,13 +26,13 @@ Devs: "Ashh#8675" ".nero#3887" "JackOutTheBox#6869"
 
 Library: Eris
 
-Ram Usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB used
+Ram Usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MBs of ram used!
 
 Guilds: ${client.guilds.size}
 
 Members: ${client.users.size}
 
-Version: 1.0.0
+Version: 1.1.0 
         \`\`\``,
         color: colors.theme
       }

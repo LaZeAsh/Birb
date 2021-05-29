@@ -55,7 +55,7 @@ export = {
           },
           {
             name: `🕰️ Created At`,
-            value: `${moment(new Date(guild.createdAt).toISOString()).format("dddd, MMMM Do YYYY, [at] h:mm a")}`
+            value: `${moment(new Date(guild.createdAt).toISOString()).format("dddd, MMMM Do YYYY")}`
           }
         ],
         thumbnail: {

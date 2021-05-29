@@ -1,0 +1,9 @@
+{
+  "apps": [
+      {
+        "name": "Birb",
+        "script": "src/index.ts",
+        "interpreter": "ts-node"
+      }
+  ]
+}

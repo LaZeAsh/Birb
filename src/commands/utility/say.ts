@@ -15,7 +15,7 @@ export = {
       client
     } = e
     console.log(this.permissions)
-    if(!message.member?.permissions.has(this.permissions)) return client.createMessage(message.channel.id, `🐦 is angy! You do not have the right permissions to execute this command! \`\`\`Administrator permissions are required to execute this command!\`\`\``)
+    if(!message.member?.permissions.has("administrator")) return client.createMessage(message.channel.id, `🐦 is angy! You do not have the right permissions to execute this command! \`\`\`Administrator permissions are required to execute this command!\`\`\``)
     const say: string = args.slice(0).join(" ")
     if(!say) return client.createMessage(message.channel.id, `🐦 is angy! Please input the right amount of arguments for me to execute this command! \`\`\`b!say <content>\`\`\``)
     client.createMessage(message.channel.id, {
