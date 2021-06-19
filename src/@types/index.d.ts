@@ -18,7 +18,8 @@ export interface CommandProps {
 export interface Constants {
   error: number
   success: number
-  theme: number 
+  theme: number
+  medium: number
 }
 
 export interface MessageProps extends Message {

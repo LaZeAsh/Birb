@@ -5,14 +5,15 @@ import Eris, { Client, Message } from 'eris'
 import * as fs from 'fs'
 import * as path from 'path'
 const client = new Client(process.env.TOKEN as string, { autoreconnect: true, restMode: true })
-const prefix: string = "b!"
+let prefix: string = "b!"
 import * as log from 'fancy-log'
 import { Command, Constants } from './@types'
 
 const colors: Constants = {
   error: 0xff0000, //#ff0000
   theme: 0x28eaff, //#28eaff
-  success:0x00ff1c //#00ff1c
+  success:0x00ff1c, //#00ff1c
+  medium: 0xe3e550, //#e3e550
 }
 // Database 
 import {
@@ -40,12 +41,19 @@ for (const folder of commandFolder) {
 
 // Event Handling \\
 import {
- message,
-  ready
+  message,
+  ready,
+  guildCreate,
+  guildLeave,
+  messageUpdate
 } from './events'
 
 client.on('ready', ready)
 client.on('messageCreate', message)
+client.on('guildCreate', guildCreate)
+client.on('guildDelete', guildLeave)
+client.on('messageUpdate', messageUpdate)
+// client.on('messageUpdate', messageUpdate)
 client.on('error', async(error) => {
   log.info(`Error event working`)
   client.createMessage(`820734674460213299`, {
@@ -85,5 +93,17 @@ function secondsToTimeV2(secs: number) {
   return time;
 }
 
+function channelPermsCheck(channelID: string, requiredPerms: string[], message: Eris.Message) {
+  let channel = client.getChannel(channelID) as Eris.GuildChannel
+  if(!channel) return
+  let perms = channel.permissionOverwrites
+  if(!perms.has(requiredPerms[0] as string)) return message.channel.createMessage(`🐦 is sad! I do not have permission to embed links in this channel!`)
+}
 
-export { client, prefix, commands, aliases, colors, deleteMsg, secondsToTimeV2 }
+function userPermsCheck(userID: string, requiredPerms: any, message: Eris.Message, guild: Eris.Guild) {
+  let member = guild.members.get(userID)
+  if(!member) return
+  if(!member.permissions.has(requiredPerms[0])) return message.channel.createMessage(`🐦 is sad! You cannot execute this command `)
+}
+
+export { client, prefix, commands, aliases, colors, deleteMsg, secondsToTimeV2, channelPermsCheck, userPermsCheck }

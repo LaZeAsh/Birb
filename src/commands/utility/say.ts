@@ -20,7 +20,7 @@ export = {
     if(!say) return client.createMessage(message.channel.id, `🐦 is angy! Please input the right amount of arguments for me to execute this command! \`\`\`b!say <content>\`\`\``)
     client.createMessage(message.channel.id, {
       embed: {
-        description: `${message.author.username} is chirping 🎵 \n \n ${say}`,
+        description: `${message.author.username} is chirping 🎵 \n \n **${say}**`,
         color: colors.theme
       }
     })

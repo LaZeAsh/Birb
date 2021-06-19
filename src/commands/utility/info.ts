@@ -6,7 +6,7 @@ import { colors } from '../../index'
 export = {
   name: "info",
   category: "util",
-  aliases: ["information"],
+  aliases: ["information", "status"],
   description: "Information About Birb!",
   usage: "b!info",
   run: function(e: CommandProps) {
@@ -32,7 +32,7 @@ Guilds: ${client.guilds.size}
 
 Members: ${client.users.size}
 
-Version: 1.1.0 
+Version: 1.2.0
         \`\`\``,
         color: colors.theme
       }

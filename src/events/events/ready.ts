@@ -7,7 +7,6 @@ export function ready() {
   // const IDs = client.guilds.forEach((guild: any) => {
   //   guild.get(``)
   // })
-  console.log(client.guilds.get(process.env.testingGuild as string)?.members)
   // const IDs: any = client.guilds.get(process.env.testingGuild as string)?.members
   // for (const ids of IDs) {
   //   modIDs.push(ids)

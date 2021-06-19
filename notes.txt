@@ -1,5 +1,0 @@
---- Notes ---
-
-Make devs caching so every member's ID in figgy test server is pushed into a map and those are the devs 
-
-Filter bots and certain roles if needed (like jack's alt and other stuff)

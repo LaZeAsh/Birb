@@ -1,3 +1,4 @@
+import Eris from "eris";
 import { CommandProps, Command } from "../../@types";
 import { colors } from '../../index'
 
@@ -40,7 +41,7 @@ export = {
           {
             name: `📰 Animated`,
             value: `${emoji.animated}`
-          },
+          }
         ],
         thumbnail: {
           url: emoji?.icon
