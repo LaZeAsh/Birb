@@ -1,7 +1,7 @@
 import Eris from "eris";
 import { CommandProps, Command } from "../../@types";
 import { colors, deleteMsg } from '../../index'
-
+import moment from 'moment'
 export = {
   name: "userinfo",
   category: "utils",

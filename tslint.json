@@ -1,16 +1,13 @@
 {
   "extends": "tslint-config-airbnb",
   "rules": {
-    "no-parameter-reassignment": false,
-    "no-else-after-return": false,
-    "no-increment-decrement": false,
-    "ter-arrow-parens": false,
-    "align": false,
-    "max-line-length": [
-      true,
-      {
-        "limit": 120
-      }
-    ]
+    "await-promise": true,
+    "no-async-without-wait": true,
+    "no-invalid-template-strings": true,
+    "no-unused-variable": true,
+    "no-var-keyword": true,
+    "triple-equals": true,
+    "align": true,
+    "eofline": true
   }
 }
