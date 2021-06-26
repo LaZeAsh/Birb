@@ -21,17 +21,18 @@ export = {
             {
               name: `ℹ️ Utility`,
               value: `Commands that will help you!`,
-              inline: true
             },
             {
               name: `🔨 Moderation`,
               value: `Commands that will keep your server safe!`,
-              inline: true
             },
             {
               name: `🪅 Fun`,
               value: `Commands that will make your server more enjoyable`,
-              inline: true
+            },
+            {
+              name: `<:admin:858432071235141664> Admin`,
+              value: `Admin Commands to set up certain features of Birb in your server!`
             }
           ],
           color: colors.theme
@@ -59,6 +60,9 @@ export = {
         }else if(cmd_name === 'fun'){
           const cmds_text = get_cmds_from_category('fun');
           return e.client.createMessage(e.message.channel.id, { embed: { title: `🐦 Birbby Help Commands! | Prefix: ${prefix}`, description: `**${cmds_text}**`, color: colors.theme } });
+        }else if(cmd_name === 'admin'){
+          const cmds_text = get_cmds_from_category('admin')
+          return e.message.channel.createMessage({ embed: { title: `🐦 Birbby Help Commands! | Prefix: ${prefix}`, description: `**${cmds_text}**`, color: colors.theme }})
         }else return e.client.createMessage(e.message.channel.id, { embed: { title: `🐦 Birbby Help Commands! | Prefix: ${prefix}`, description: `**Failed to find category or command name**`, color: colors.theme  }});
       }
     }

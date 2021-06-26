@@ -1,14 +1,14 @@
 import { CommandProps, Command } from "../../@types"
 import { colors, deleteMsg } from '../../index'
-import { logChannel } from '../../database/index'
+import { welcome } from '../../database/index'
 import { Model } from 'mongoose'
 
 
 export = {
-  name: "setlog",
+  name: "setwelcomechannel",
   category: "admin",
-  aliases: ["setlogs", "setlogchannel", "slog"],
-  description: "Set the Birb logging channel",
+  aliases: ["setwelcome", "swelcome"],
+  description: "Set the Birb Welcome Channel",
   usage: "b!setlog <channel-mention/channel-id>",
   run: async function(e: CommandProps) {
     const {
@@ -24,7 +24,7 @@ export = {
     try {
       //Checking for args and returning channel ID if any
       if(!args[0] && message?.channelMentions[0] === undefined) {
-        return message.channel.createMessage(`No args`)
+        return message.channel.createMessage(`🐦 is sad! Please mention a channel or input a valid channel ID to set the logs channel to!`)
       } else if (args[0] && message?.channelMentions[0] !== undefined) {
         channel = message?.channelMentions[0]
       } else {
@@ -38,9 +38,9 @@ export = {
 
       //Find stuff in DB
       try {
-        if(await logChannel.exists({ guildID: message.guildID })) {
+        if(await welcome.exists({ guildID: message.guildID })) {
           let oldChannelID: string | any
-          logChannel.findOne({ guildID: message.guildID }).then((doc) => {
+          welcome.findOne({ guildID: message.guildID }).then((doc) => {
             oldChannelID = doc?.channelID
           })
           return message.channel.createMessage({
@@ -64,7 +64,7 @@ export = {
               color: colors.medium
             }
           }).then(async (msg) => {
-            await logChannel.updateOne({ guildID: message.guildID }, { channelID: channel })
+            await welcome.updateOne({ guildID: message.guildID }, { channelID: channel })
             msg.edit({
               embed: {
                 title: `Log Channel Updated`,
@@ -90,8 +90,8 @@ export = {
         }
         return message.channel.createMessage({
           embed: {
-            title: `Creating Logs Channel!`,
-            description: `Logging channel has been set to <#${channel}>`,
+            title: `Creating Welcome Channel!`,
+            description: `Welcome channel has been set to <#${channel}>`,
             fields: [
               {
                 name: `New Channel`,
@@ -109,11 +109,11 @@ export = {
             color: colors.medium
           }
         }).then(async (msg) => {
-          await (await logChannel.create({ guildID: message.guildID, channelID: channel })).save()
+          await (await welcome.create({ guildID: message.guildID, channelID: channel })).save()
           msg.edit({
             embed: {
-              title: `Logs Channel Created!`,
-              description: `Logging channel has been set to <#${channel}>`,
+              title: `Welcome Channel Created!`,
+              description: `Welcome channel has been set to <#${channel}>`,
               fields: [
                 {
                   name: `New Channel`,

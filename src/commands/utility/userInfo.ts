@@ -33,44 +33,44 @@ export = {
       member = null
     }
     if(!member) {
-      let memberInfo: Promise<Eris.User>
+      let memberInfo: Promise<Eris.User> | any
       try {
-        memberInfo = client.getRESTUser(ID)
+        memberInfo = await client.getRESTUser(ID)
       } catch (error) {
         return message.channel.createMessage(`Member doesn't exist`)
       }
       return message.channel.createMessage({
         embed: {
-          title: `${(await memberInfo).username}#${(await memberInfo).discriminator}`,
-          description: `🐦 a small birbscription of ${(await memberInfo).username}`,
+          title: `${memberInfo.username}#${memberInfo.discriminator}`,
+          description: `🐦 a small birbscription of ${memberInfo.username}`,
           fields: [
             {
               name: "📝 Display Name",
-              value: `${(await memberInfo).username}`,
+              value: `${memberInfo.username}`,
               inline: true
             },
             {
               name: `#️⃣ Discriminator`,
-              value: `${(await memberInfo).discriminator}`,
+              value: `${memberInfo.discriminator}`,
               inline: true
             },
             {
               name: "🆔 User ID",
-              value: `${(await memberInfo).id}`,
+              value: `${memberInfo.id}`,
               inline: true
             },
             {
               name: `🤖 Bot`,
-              value: `${(await memberInfo).bot === true ? 'Yes' : 'No'}`,
+              value: `${memberInfo.bot === true ? 'Yes' : 'No'}`,
               inline: true
             },
             {
               name: `⏲️ Account Creation`,
-              value: `${new Date((await memberInfo).createdAt).toLocaleString("en-US", {month: "long", weekday: "long", day: "numeric", year: "numeric", hour: "numeric", minute: "numeric", second: "numeric", timeZoneName: "short", })} \n ${(Date.now() - (await memberInfo).createdAt)}`,
+              value: `${new Date(memberInfo.createdAt).toLocaleString("en-US", {month: "long", weekday: "long", day: "numeric", year: "numeric", hour: "numeric", minute: "numeric", second: "numeric", timeZoneName: "short", })} \n ${(Date.now() - (await memberInfo).createdAt)}`,
             },
           ],
           thumbnail: {
-            url: (await memberInfo).avatarURL
+            url: memberInfo.avatarURL
           },
           color: colors.theme
         }

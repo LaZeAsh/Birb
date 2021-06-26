@@ -9,6 +9,10 @@ const schema = new Schema({
   guildID: {
     type: String,
     required: true
+  },
+  channelID: {
+    type: String,
+    required: true
   }
 }, {versionKey: false})
 

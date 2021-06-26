@@ -64,6 +64,7 @@ client.on('error', async(error) => {
     }
   })
 })
+
 client.connect()
 
 //Global Functions
