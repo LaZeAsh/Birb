@@ -17,7 +17,7 @@ export = {
     message.channel.createMessage({
       embed: {
         title: `Wordcount of ${message.author.username}'s Message!`,
-        description: `The wordcount of your text is **${args.slice(0).join(" ").length}** characters`,
+        description: `The wordcount of your text is **${args.slice(0).join(" ").split(" ").length}** characters`,
         color: colors.theme
       }
     })

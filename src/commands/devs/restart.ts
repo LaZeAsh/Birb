@@ -18,6 +18,6 @@ export = {
       deleteMsg(message, 5500)
     })
 
-    message.channel.createMessage(`🐦 Birb is going to sleep! Goodnight!`).then(() => process.exit())
+    message.channel.createMessage(`🐦 Birb is going to sleep! Goodnight!`).then(() => process.exit()); //PM2 is gonna wake it up lol
   }
 } as Command

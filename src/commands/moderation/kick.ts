@@ -15,6 +15,15 @@ export = {
     } = e
     let guild = client.guilds.get(message.guildID as string)
     if(!guild) return
-    let ID = "  "
+    let ID: string[] = []
+    try {
+      for (let mentions of message.mentions) {
+        ID.push(mentions.id)
+        console.log(mentions.id)
+        console.log(ID)
+      }
+    } catch (error) {
+
+    }
   } 
 } as Command

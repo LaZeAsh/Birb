@@ -40,7 +40,7 @@ export = {
       try {
         if(await logChannel.exists({ guildID: message.guildID })) {
           let oldChannelID: string | any
-          logChannel.findOne({ guildID: message.guildID }).then((doc) => {
+          logChannel. ({ guildID: message.guildID }).then((doc) => {
             oldChannelID = doc?.channelID
           })
           return message.channel.createMessage({

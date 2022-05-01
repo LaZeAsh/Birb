@@ -54,16 +54,16 @@ client.on('guildCreate', guildCreate)
 client.on('guildDelete', guildLeave)
 client.on('messageUpdate', messageUpdate)
 // client.on('messageUpdate', messageUpdate)
-client.on('error', async(error) => {
-  log.info(`Error event working`)
-  client.createMessage(`820734674460213299`, {
-    embed: {
-      title: "Error",
-      description: `\`${error}\``,
-      color: colors.error
-    }
-  })
-})
+// client.on('error', async(error) => {
+//   log.info(`Error event working`)
+//   client.createMessage(`820734674460213299`, {
+//     embed: {
+//       title: "Error",
+//       description: `\`${error}\``,
+//       color: colors.error
+//     }
+//   })
+// })
 
 client.connect()
 
@@ -71,7 +71,7 @@ client.connect()
 
 function deleteMsg(message: Message, mili_seconds: number, reason?: string): any{
   if(!message || !mili_seconds)return console.log('Missing parameters');
-  if(!reason)reason = 'No reason provided';
+  if(!reason) reason = 'No reason provided';
   setTimeout(() => message.delete(reason).catch((error: any) => {
     client.createMessage(process.env.errrorChannel as string, {
       embed: {
@@ -108,3 +108,4 @@ function userPermsCheck(userID: string, requiredPerms: any, message: Eris.Messag
 }
 
 export { client, prefix, commands, aliases, colors, deleteMsg, secondsToTimeV2, channelPermsCheck, userPermsCheck }
+

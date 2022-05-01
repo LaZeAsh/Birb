@@ -10,8 +10,18 @@ export async function message(message: Message) {
     })
   }
   if(!message.content.toLowerCase().startsWith(prefix)) prefix = `<@!${client.user.id}> `
-  if(!message.content.toLowerCase().startsWith(prefix) || message.author.bot) return
-  const args = message.content.slice(prefix.length).split(/ +/) 
+  if(!message.content.toLowerCase().startsWith(prefix) || message.author.bot) return;
+  /*
+  Splits the message into pieces after slicing off the prefix 
+  eg: b!lol hi I am Ayush
+  return: arg[0] = lol; arg[1] = hi; arg[2] = I; arg[3] = am; arg[4] Ayush
+   */
+  const args: string[] = message.content.slice(prefix.length).split(" ");
+  args.forEach((arg) => {
+    if(arg === "hi") {
+      return true;
+    }
+  });
   const command = args.shift()?.toLowerCase();
   if(!command || !commands.has(command) && !aliases.get(command))return
   const cmd = commands.get(command) || aliases.get(command);

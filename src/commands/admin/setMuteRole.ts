@@ -4,10 +4,10 @@ import { muteRole } from '../../database/models'
 export = {
   name: "setmuterole",
   category: "admin",
-  aliases: ["role"],
+  aliases: ["smrole"],
   description: "",
   usage: "b!setmuterole <role-mention/role-id>",
-  run: function(e: CommandProps) {
+  run: async function(e: CommandProps) {
     const {
       message,
       args,
@@ -29,10 +29,103 @@ export = {
 
       // Saving into the DB
       try {
-        if(muteRole.exists({ guildID: message.guildID })) {
-          muteRole.findOne()
+        let oldRoleID: string = ""
+        if(await muteRole.exists({ guildID: message.guildID })) {
+          muteRole.findOne({ guildID: message.guildID}).then((doc) => {
+            if(!doc) return
+            oldRoleID = doc?.roleID
+          })
+          console.log(oldRoleID)
+          if(!oldRoleID) oldRoleID = "error"
+          return message.channel.createMessage({
+            embed: {
+              title: `Mute Role Updating`,
+              description: `Mute Role is Updating`,
+              fields: [
+                {
+                  name: `New Role`,
+                  value: `<@&${role}>`
+                },
+                {
+                  name: `Old Role ID`,
+                  value: `${oldRoleID}`
+                },
+                {
+                  name: `Status`,
+                  value: `Saving!`
+                }
+              ],
+              color: colors.medium
+            }
+          }).then(async (msg) => {
+            await muteRole.updateOne({ guildID: message.guildID }, { roleID: role })
+            msg.edit({
+              embed: {
+                title: `Mute Role Updated!`,
+                description: `Mute Role is Updated`,
+                fields: [
+                  {
+                    name: `New Role`,
+                    value: `<@&${role}>`
+                  },
+                  {
+                    name: `Old Role ID`,
+                    value: `${oldRoleID}`
+                  },
+                  {
+                    name: `Status`,
+                    value: `Saved!`
+                  }
+                ],
+                color: colors.success
+              }
+            })
+          })
         } else {
-
+          return message.channel.createMessage({
+            embed: {
+              title: `Creating Mute Role`,
+              description: `Mute Role is being created`,
+              fields: [
+                {
+                  name: `New Role`,
+                  value: `<@&${role}>`
+                },
+                {
+                  name: `Old Role ID`,
+                  value: `None`
+                },
+                {
+                  name: `Status`,
+                  value: `Saving!`
+                }
+              ],
+              color: colors.medium
+            }
+          }).then(async (msg) => {
+            await (await muteRole.create({ guildID: message.guildID, roleID: role })).save()
+            msg.edit({
+              embed: {
+                title: `Created Mute Role`,
+                description: `Mute Role has been created`,
+                fields: [
+                  {
+                    name: `New Role`,
+                    value: `<@&${role}>`
+                  },
+                  {
+                    name: `Old Role ID`,
+                    value: `None`
+                  },
+                  {
+                    name: `Status`,
+                    value: `Saved!`
+                  }
+                ],
+                color: colors.success
+              }
+            })
+          })
         }
       } catch (error) {
 
